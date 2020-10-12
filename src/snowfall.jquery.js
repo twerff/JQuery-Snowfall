@@ -286,12 +286,15 @@ if (!Date.now)
                                 for(var w = 0; w < bounds.width; w++){
                                     collisionData[w] = [];
                                 }
+				    
+				// Don't collect on border radius
+            			var radius = getStyle(elements[i], 'border-radius').split('px')[0];
 
                                 canvasCollection.push({
                                     element : $canvas.get(0),
-                                    x : bounds.left,
+                                    x : bounds.left - radius,
                                     y : bounds.top-collectionHeight,
-                                    width : bounds.width,
+                                    width : bounds.width - radius,
                                     height: collectionHeight,
                                     colData : collisionData
                                 });
